@@ -129,8 +129,6 @@
 <span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/epiforecasts/socialmixr" class="external-link">socialmixr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in get(paste0(generic, ".", class), envir = get_method_env()) : </span></span>
-<span><span class="co">#&gt;   object 'type_sum.accel' not found</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://colorspace.R-Forge.R-project.org/" class="external-link">colorspace</a></span><span class="op">)</span></span></code></pre></div>
 </details>
 </div>
@@ -251,17 +249,28 @@ The effective <span class="math inline">\(R_0\)</span> is called <span class="ma
 <span></span>
 <span><span class="co"># examine the combined data</span></span>
 <span><span class="va">final_size_data</span></span>
-<span><span class="co">#&gt;    demo_grp   susc_grp susceptibility p_infected      scenario</span></span>
-<span><span class="co">#&gt; 1     [0,5) susc_grp_1           0.75  0.2288298 heterogeneous</span></span>
-<span><span class="co">#&gt; 2    [5,18) susc_grp_1           0.80  0.4639058 heterogeneous</span></span>
-<span><span class="co">#&gt; 3   [18,40) susc_grp_1           0.85  0.3517122 heterogeneous</span></span>
-<span><span class="co">#&gt; 4   [40,65) susc_grp_1           0.90  0.3119224 heterogeneous</span></span>
-<span><span class="co">#&gt; 5       65+ susc_grp_1           1.00  0.2163372 heterogeneous</span></span>
-<span><span class="co">#&gt; 6     [0,5) susc_grp_1           1.00  0.4160682       uniform</span></span>
-<span><span class="co">#&gt; 7    [5,18) susc_grp_1           1.00  0.6888703       uniform</span></span>
-<span><span class="co">#&gt; 8   [18,40) susc_grp_1           1.00  0.5379381       uniform</span></span>
-<span><span class="co">#&gt; 9   [40,65) susc_grp_1           1.00  0.4639496       uniform</span></span>
-<span><span class="co">#&gt; 10      65+ susc_grp_1           1.00  0.3042623       uniform</span></span></code></pre></div>
+<span><span class="co">#&gt;    demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1     [0,5) susc_grp_1           0.75    3453670  0.2288298   790302.8</span></span>
+<span><span class="co">#&gt; 2    [5,18) susc_grp_1           0.80    9761554  0.4639058  4528441.7</span></span>
+<span><span class="co">#&gt; 3   [18,40) susc_grp_1           0.85   18110368  0.3517122  6369637.7</span></span>
+<span><span class="co">#&gt; 4   [40,65) susc_grp_1           0.90   19288101  0.3119224  6016391.5</span></span>
+<span><span class="co">#&gt; 5       65+ susc_grp_1           1.00    9673058  0.2163372  2092642.5</span></span>
+<span><span class="co">#&gt; 6     [0,5) susc_grp_1           1.00    3453670  0.4160682  1436962.2</span></span>
+<span><span class="co">#&gt; 7    [5,18) susc_grp_1           1.00    9761554  0.6888703  6724444.3</span></span>
+<span><span class="co">#&gt; 8   [18,40) susc_grp_1           1.00   18110368  0.5379381  9742257.1</span></span>
+<span><span class="co">#&gt; 9   [40,65) susc_grp_1           1.00   19288101  0.4639496  8948705.9</span></span>
+<span><span class="co">#&gt; 10      65+ susc_grp_1           1.00    9673058  0.3042623  2943147.1</span></span>
+<span><span class="co">#&gt;         scenario</span></span>
+<span><span class="co">#&gt; 1  heterogeneous</span></span>
+<span><span class="co">#&gt; 2  heterogeneous</span></span>
+<span><span class="co">#&gt; 3  heterogeneous</span></span>
+<span><span class="co">#&gt; 4  heterogeneous</span></span>
+<span><span class="co">#&gt; 5  heterogeneous</span></span>
+<span><span class="co">#&gt; 6        uniform</span></span>
+<span><span class="co">#&gt; 7        uniform</span></span>
+<span><span class="co">#&gt; 8        uniform</span></span>
+<span><span class="co">#&gt; 9        uniform</span></span>
+<span><span class="co">#&gt; 10       uniform</span></span></code></pre></div>
 </details><details class="chunk-details"><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">final_size_data</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span></span>
@@ -384,17 +393,28 @@ When antibody response decays are known for an immunisation course <span class="
 <span></span>
 <span><span class="co"># examine the data</span></span>
 <span><span class="va">final_size_immunised</span></span>
-<span><span class="co">#&gt;    demo_grp     susc_grp susceptibility p_infected     scenario</span></span>
-<span><span class="co">#&gt; 1     [0,5) Un-immunised         0.7500 0.10882106 immunisation</span></span>
-<span><span class="co">#&gt; 2    [5,18) Un-immunised         0.8000 0.25096327 immunisation</span></span>
-<span><span class="co">#&gt; 3   [18,40) Un-immunised         0.8500 0.17473366 immunisation</span></span>
-<span><span class="co">#&gt; 4   [40,65) Un-immunised         0.9000 0.15172135 immunisation</span></span>
-<span><span class="co">#&gt; 5       65+ Un-immunised         1.0000 0.10075783 immunisation</span></span>
-<span><span class="co">#&gt; 6     [0,5)    Immunised         0.5625 0.08277964 immunisation</span></span>
-<span><span class="co">#&gt; 7    [5,18)    Immunised         0.6000 0.19484900 immunisation</span></span>
-<span><span class="co">#&gt; 8   [18,40)    Immunised         0.6375 0.13414414 immunisation</span></span>
-<span><span class="co">#&gt; 9   [40,65)    Immunised         0.6750 0.11609844 immunisation</span></span>
-<span><span class="co">#&gt; 10      65+    Immunised         0.7500 0.07656251 immunisation</span></span></code></pre></div>
+<span><span class="co">#&gt;    demo_grp     susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1     [0,5) Un-immunised         0.7500    1726835 0.10882106   187916.0</span></span>
+<span><span class="co">#&gt; 2    [5,18) Un-immunised         0.8000    4880777 0.25096327  1224895.8</span></span>
+<span><span class="co">#&gt; 3   [18,40) Un-immunised         0.8500    9055184 0.17473366  1582245.4</span></span>
+<span><span class="co">#&gt; 4   [40,65) Un-immunised         0.9000    9644050 0.15172135  1463208.4</span></span>
+<span><span class="co">#&gt; 5       65+ Un-immunised         1.0000    4836529 0.10075783   487318.1</span></span>
+<span><span class="co">#&gt; 6     [0,5)    Immunised         0.5625    1726835 0.08277964   142946.8</span></span>
+<span><span class="co">#&gt; 7    [5,18)    Immunised         0.6000    4880777 0.19484900   951014.5</span></span>
+<span><span class="co">#&gt; 8   [18,40)    Immunised         0.6375    9055184 0.13414414  1214699.9</span></span>
+<span><span class="co">#&gt; 9   [40,65)    Immunised         0.6750    9644050 0.11609844  1119659.2</span></span>
+<span><span class="co">#&gt; 10      65+    Immunised         0.7500    4836529 0.07656251   370296.8</span></span>
+<span><span class="co">#&gt;        scenario</span></span>
+<span><span class="co">#&gt; 1  immunisation</span></span>
+<span><span class="co">#&gt; 2  immunisation</span></span>
+<span><span class="co">#&gt; 3  immunisation</span></span>
+<span><span class="co">#&gt; 4  immunisation</span></span>
+<span><span class="co">#&gt; 5  immunisation</span></span>
+<span><span class="co">#&gt; 6  immunisation</span></span>
+<span><span class="co">#&gt; 7  immunisation</span></span>
+<span><span class="co">#&gt; 8  immunisation</span></span>
+<span><span class="co">#&gt; 9  immunisation</span></span>
+<span><span class="co">#&gt; 10 immunisation</span></span></code></pre></div>
 </details><p>Compare scenarios in which susceptibility is heterogeneous between groups, against the immunisation scenario in which susceptibility also varies within groups.</p>
 <details class="chunk-details"><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">final_size_immunised</span><span class="op">)</span> <span class="op">+</span></span>
@@ -513,9 +533,9 @@ Figure 2: Final size of an SIR epidemic with <span class="math inline">\(R_0\)</
 <span>  susceptibility <span class="op">=</span> <span class="va">susceptibility</span>,</span>
 <span>  p_susceptibility <span class="op">=</span> <span class="va">p_susceptibility</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility p_infected</span></span>
-<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1            1.0  0.5083807</span></span>
-<span><span class="co">#&gt; 2 demo_grp_1 susc_grp_2            0.7  0.3916685</span></span></code></pre></div>
+<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1            1.0   46900000  0.5083807   23843053</span></span>
+<span><span class="co">#&gt; 2 demo_grp_1 susc_grp_2            0.7   20100000  0.3916685    7872538</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2 unnumbered">

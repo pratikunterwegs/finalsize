@@ -178,10 +178,10 @@ Here, we use an estimate for the U.K. population size of about 67 million.</p>
 <span></span>
 <span><span class="co"># view the output data frame</span></span>
 <span><span class="va">final_size_data</span></span>
-<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility p_infected</span></span>
-<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1              1  0.5828132</span></span></code></pre></div>
-</details><p>This is the final epidemic size without accounting for heterogeneity in social contacts by age or other factors, and without accounting for variation in susceptibility to infection between or within demographic groups.</p>
-<p>This value, of about 58% of the population infected, is easily converted to a count, and suggests that about 39 million people would be infected over the course of this epidemic.</p>
+<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1              1    6.7e+07  0.5828132   39048485</span></span></code></pre></div>
+</details><p>This is the final epidemic size – in proportional as well as absolute terms – without accounting for heterogeneity in social contacts by age or other factors, and without accounting for variation in susceptibility to infection between or within demographic groups.</p>
+<p>This value, of about 58% of the population or about 39 million people, is the expected proportion and number of individuals that would be infected over the course of this epidemic.</p>
 </div>
 <div class="section level2">
 <h2 id="a-short-cut-for-homogeneous-populations">A short-cut for homogeneous populations<a class="anchor" aria-label="anchor" href="#a-short-cut-for-homogeneous-populations"></a>
@@ -191,8 +191,8 @@ For one very specific use-case, wherein the population is assumed to have homoge
 <p>In this case, the final size calculation can be simplified to <code>final_size(r0)</code>, with all other parameters taking their default values, which assume homogeneous social contacts and susceptibility.</p>
 <details class="chunk-details" open><summary class="chunk-summary"><span class="chunk-summary-text">Code</span></summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/final_size.html">final_size</a></span><span class="op">(</span><span class="va">r0</span><span class="op">)</span></span>
-<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility p_infected</span></span>
-<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1              1  0.5828132</span></span></code></pre></div>
+<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1              1          1  0.5828132  0.5828132</span></span></code></pre></div>
 </details>
 </div>
 <div class="section level2 unnumbered">

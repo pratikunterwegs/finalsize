@@ -138,8 +138,10 @@ argument.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A data.frame of the proportion of infected individuals, within each
-demography group and susceptibility group combination.
+    <p>A data.frame of the proportion and number of infected individuals,
+within each demography group and susceptibility group combination.
+The sizes of each demography-susceptibility combination are also returned in
+a column.
 If the demography groups and susceptibility groups are named, these
 names are added to relevant columns. If the groups are not named, synthetic
 names are added of the form <code>demo_grp_&lt;i&gt;</code>, for each demographic group
@@ -197,8 +199,8 @@ based on the solver error. Defaults to TRUE.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## For a given R_0</span></span></span>
 <span class="r-in"><span><span class="va">r0</span> <span class="op">&lt;-</span> <span class="fl">2.0</span></span></span>
 <span class="r-in"><span><span class="fu">final_size</span><span class="op">(</span><span class="va">r0</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     demo_grp   susc_grp susceptibility p_infected</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 demo_grp_1 susc_grp_1              1  0.7968124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     demo_grp   susc_grp susceptibility group_size p_infected n_infected</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 demo_grp_1 susc_grp_1              1          1  0.7968124  0.7968124</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## For a population with multiple demographic groups</span></span></span>
 <span class="r-in"><span><span class="co"># load example POLYMOD data included in the package</span></span></span>
@@ -231,16 +233,16 @@ based on the solver error. Defaults to TRUE.</p></li>
 <span class="r-in"><span>  susceptibility <span class="op">=</span> <span class="va">susceptibility</span>,</span></span>
 <span class="r-in"><span>  p_susceptibility <span class="op">=</span> <span class="va">p_susceptibility</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   demo_grp   susc_grp susceptibility p_infected</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   [0,20) susc_grp_1              1  0.8532885</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  [20,40) susc_grp_1              1  0.7974557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      40+ susc_grp_1              1  0.6880834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   [0,20) susc_grp_2              1  0.8532885</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  [20,40) susc_grp_2              1  0.7974557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      40+ susc_grp_2              1  0.6880834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   [0,20) susc_grp_3              1  0.8532885</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  [20,40) susc_grp_3              1  0.7974557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9      40+ susc_grp_3              1  0.6880834</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   demo_grp   susc_grp susceptibility group_size p_infected n_infected</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   [0,20) susc_grp_1              1    4933097  0.8532885    4209355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  [20,40) susc_grp_1              1    5508767  0.7974557    4392998</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      40+ susc_grp_1              1    9653720  0.6880834    6642564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   [0,20) susc_grp_2              1    4933097  0.8532885    4209355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  [20,40) susc_grp_2              1    5508767  0.7974557    4392998</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      40+ susc_grp_2              1    9653720  0.6880834    6642564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   [0,20) susc_grp_3              1    4933097  0.8532885    4209355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  [20,40) susc_grp_3              1    5508767  0.7974557    4392998</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9      40+ susc_grp_3              1    9653720  0.6880834    6642564</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Using manually specified solver settings for the iterative solver</span></span></span>
 <span class="r-in"><span><span class="va">control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
@@ -259,16 +261,16 @@ based on the solver error. Defaults to TRUE.</p></li>
 <span class="r-in"><span>  solver <span class="op">=</span> <span class="st">"iterative"</span>,</span></span>
 <span class="r-in"><span>  control <span class="op">=</span> <span class="va">control</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   demo_grp   susc_grp susceptibility p_infected</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   [0,20) susc_grp_1              1  0.8532715</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  [20,40) susc_grp_1              1  0.7974597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      40+ susc_grp_1              1  0.6880988</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   [0,20) susc_grp_2              1  0.8532715</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  [20,40) susc_grp_2              1  0.7974597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      40+ susc_grp_2              1  0.6880988</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   [0,20) susc_grp_3              1  0.8532715</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  [20,40) susc_grp_3              1  0.7974597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9      40+ susc_grp_3              1  0.6880988</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   demo_grp   susc_grp susceptibility group_size p_infected n_infected</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   [0,20) susc_grp_1              1    4933097  0.8532715    4209271</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  [20,40) susc_grp_1              1    5508767  0.7974597    4393020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      40+ susc_grp_1              1    9653720  0.6880988    6642713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   [0,20) susc_grp_2              1    4933097  0.8532715    4209271</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  [20,40) susc_grp_2              1    5508767  0.7974597    4393020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      40+ susc_grp_2              1    9653720  0.6880988    6642713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   [0,20) susc_grp_3              1    4933097  0.8532715    4209271</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  [20,40) susc_grp_3              1    5508767  0.7974597    4393020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9      40+ susc_grp_3              1    9653720  0.6880988    6642713</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Using manually specified solver settings for the newton solver</span></span></span>
 <span class="r-in"><span><span class="va">control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
@@ -285,16 +287,16 @@ based on the solver error. Defaults to TRUE.</p></li>
 <span class="r-in"><span>  solver <span class="op">=</span> <span class="st">"newton"</span>,</span></span>
 <span class="r-in"><span>  control <span class="op">=</span> <span class="va">control</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   demo_grp   susc_grp susceptibility p_infected</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   [0,20) susc_grp_1              1  0.9999876</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  [20,40) susc_grp_1              1  0.9999873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      40+ susc_grp_1              1  0.9999867</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   [0,20) susc_grp_2              1  0.9999876</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  [20,40) susc_grp_2              1  0.9999873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6      40+ susc_grp_2              1  0.9999867</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   [0,20) susc_grp_3              1  0.9999876</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  [20,40) susc_grp_3              1  0.9999873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9      40+ susc_grp_3              1  0.9999867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   demo_grp   susc_grp susceptibility group_size p_infected n_infected</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   [0,20) susc_grp_1              1    4933097  0.9999876    4933035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  [20,40) susc_grp_1              1    5508767  0.9999873    5508697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      40+ susc_grp_1              1    9653720  0.9999867    9653592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   [0,20) susc_grp_2              1    4933097  0.9999876    4933035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  [20,40) susc_grp_2              1    5508767  0.9999873    5508697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      40+ susc_grp_2              1    9653720  0.9999867    9653592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   [0,20) susc_grp_3              1    4933097  0.9999876    4933035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  [20,40) susc_grp_3              1    5508767  0.9999873    5508697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9      40+ susc_grp_3              1    9653720  0.9999867    9653592</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

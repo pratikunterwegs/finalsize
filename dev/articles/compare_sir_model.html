@@ -185,8 +185,8 @@
 <span></span>
 <span><span class="co"># View the estimates</span></span>
 <span><span class="va">final_size_finalsize</span></span>
-<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility p_infected</span></span>
-<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1              1  0.7968121</span></span>
+<span><span class="co">#&gt;     demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1 demo_grp_1 susc_grp_1              1    6.7e+07  0.7968121   53386413</span></span>
 <span></span>
 <span><span class="va">final_size_sir</span></span>
 <span><span class="co">#&gt; [1] 0.7968781</span></span></code></pre></div>
@@ -273,10 +273,10 @@
 <span>  p_susceptibility <span class="op">=</span> <span class="va">p_susceptibility</span>,</span>
 <span>  solver <span class="op">=</span> <span class="st">"newton"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt;   demo_grp   susc_grp susceptibility p_infected</span></span>
-<span><span class="co">#&gt; 1   [0,20) susc_grp_1            1.0  0.7119330</span></span>
-<span><span class="co">#&gt; 2  [20,40) susc_grp_1            0.5  0.3252457</span></span>
-<span><span class="co">#&gt; 3      40+ susc_grp_1            0.5  0.2334420</span></span>
+<span><span class="co">#&gt;   demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1   [0,20) susc_grp_1            1.0   14799290  0.7119330   10536103</span></span>
+<span><span class="co">#&gt; 2  [20,40) susc_grp_1            0.5   16526302  0.3252457    5375109</span></span>
+<span><span class="co">#&gt; 3      40+ susc_grp_1            0.5   28961159  0.2334420    6760752</span></span>
 <span></span>
 <span><span class="co"># using SIR model</span></span>
 <span><span class="fu">final_size_r</span><span class="op">(</span></span>
@@ -331,13 +331,13 @@
 <span>  susceptibility <span class="op">=</span> <span class="va">susceptibility</span>,</span>
 <span>  p_susceptibility <span class="op">=</span> <span class="va">p_susceptibility</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt;   demo_grp   susc_grp susceptibility p_infected</span></span>
-<span><span class="co">#&gt; 1   [0,20) susc_grp_1            1.0 0.27211694</span></span>
-<span><span class="co">#&gt; 2  [20,40) susc_grp_1            1.0 0.24819087</span></span>
-<span><span class="co">#&gt; 3      40+ susc_grp_1            1.0 0.19449495</span></span>
-<span><span class="co">#&gt; 4   [0,20) susc_grp_2            0.1 0.03126239</span></span>
-<span><span class="co">#&gt; 5  [20,40) susc_grp_2            0.1 0.02812422</span></span>
-<span><span class="co">#&gt; 6      40+ susc_grp_2            0.1 0.02139636</span></span>
+<span><span class="co">#&gt;   demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1   [0,20) susc_grp_1            1.0    5919716 0.27211694  1610855.0</span></span>
+<span><span class="co">#&gt; 2  [20,40) susc_grp_1            1.0    8263151 0.24819087  2050838.6</span></span>
+<span><span class="co">#&gt; 3      40+ susc_grp_1            1.0   20272811 0.19449495  3942959.4</span></span>
+<span><span class="co">#&gt; 4   [0,20) susc_grp_2            0.1    8879574 0.03126239   277596.7</span></span>
+<span><span class="co">#&gt; 5  [20,40) susc_grp_2            0.1    8263151 0.02812422   232394.7</span></span>
+<span><span class="co">#&gt; 6      40+ susc_grp_2            0.1    8688348 0.02139636   185899.0</span></span>
 <span></span>
 <span><span class="co"># estimate group-specific final sizes from the SIR model</span></span>
 <span><span class="fu">final_size_r</span><span class="op">(</span></span>
@@ -386,13 +386,13 @@
 <span>  susceptibility <span class="op">=</span> <span class="va">susceptibility</span>,</span>
 <span>  p_susceptibility <span class="op">=</span> <span class="va">p_susceptibility</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt;   demo_grp   susc_grp susceptibility p_infected</span></span>
-<span><span class="co">#&gt; 1   [0,20) susc_grp_1              1 0.07787362</span></span>
-<span><span class="co">#&gt; 2  [20,40) susc_grp_1              1 0.07227733</span></span>
-<span><span class="co">#&gt; 3      40+ susc_grp_1              1 0.05594389</span></span>
-<span><span class="co">#&gt; 4   [0,20) susc_grp_2              0 0.00000000</span></span>
-<span><span class="co">#&gt; 5  [20,40) susc_grp_2              0 0.00000000</span></span>
-<span><span class="co">#&gt; 6      40+ susc_grp_2              0 0.00000000</span></span>
+<span><span class="co">#&gt;   demo_grp   susc_grp susceptibility group_size p_infected n_infected</span></span>
+<span><span class="co">#&gt; 1   [0,20) susc_grp_1              1    5919716 0.07787362   460989.7</span></span>
+<span><span class="co">#&gt; 2  [20,40) susc_grp_1              1    8263151 0.07227733   597238.5</span></span>
+<span><span class="co">#&gt; 3      40+ susc_grp_1              1   20272811 0.05594389  1134140.0</span></span>
+<span><span class="co">#&gt; 4   [0,20) susc_grp_2              0    8879574 0.00000000        0.0</span></span>
+<span><span class="co">#&gt; 5  [20,40) susc_grp_2              0    8263151 0.00000000        0.0</span></span>
+<span><span class="co">#&gt; 6      40+ susc_grp_2              0    8688348 0.00000000        0.0</span></span>
 <span></span>
 <span><span class="fu">final_size_r</span><span class="op">(</span></span>
 <span>  r0 <span class="op">=</span> <span class="va">r0</span>,</span>
